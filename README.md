@@ -4,7 +4,7 @@ Android app for NIT3213 final assignment: Login → Dashboard (RecyclerView) →
 
 - **Name:** Geetansh  
 - **Student ID:** 8103430  
-- **Campus (auth path used):** `footscray`
+- **Campus:** `footscray`
 
 ---
 
@@ -13,7 +13,7 @@ Android app for NIT3213 final assignment: Login → Dashboard (RecyclerView) →
 - **Login Screen**
   - Username = first name, Password = 7–8 digit Student ID (e.g. `8103430`)
   - POST `/{campus}/auth` → receives `keypass`
-  - Error handling + timeout retry (free Render servers can “cold start”)
+  - Error handling + timeout retry
 
 - **Dashboard**
   - GET `/dashboard/{keypass}`
@@ -85,7 +85,7 @@ Layouts:
 `activity_login_page.xml`, `activity_dashboard.xml`, `item_entity.xml`, `activity_details.xml`  
 
 Manifest:  
-`AndroidManifest.xml` (Internet permission + exported flags)
+`AndroidManifest.xml` 
 
 ---
 
@@ -120,7 +120,7 @@ testImplementation("com.google.truth:truth:1.4.2")
 
 ---
 
-## 🧪 Quick API check (optional)
+## 🧪 API check 
 
 Use curl to verify your campus:
 ```bash
@@ -143,15 +143,6 @@ curl -X POST https://nit3213api.onrender.com/footscray/auth   -H "Content-Type: 
 - **Code Organization/Cleanliness**: clear packages, single responsibility, DI separated.  
 - **Dependency Injection**: Hilt with proper modules and injection points.  
 - **Unit Testing**: repository tests using MockWebServer verify auth and dashboard parsing.
-
----
-
-## 📸 Suggested screenshots for submission
-- Login screen (with input + progress)
-- Dashboard (list of cards with borders)
-- Dialog summary on item click
-- Details screen
-- Test report (green)
 
 ---
 
