@@ -30,7 +30,6 @@ android {
 
     buildFeatures { viewBinding = true }
 
-    // keep Java/Kotlin aligned; if your IDE JDK is 11/17 this is fine
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -39,7 +38,6 @@ android {
 }
 
 dependencies {
-    // AndroidX + Material
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
@@ -48,15 +46,12 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.9.2")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
 
-    // Retrofit + Moshi + OkHttp
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
-    // Moshi Kotlin adapters (fixes converter error)
     implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
 
-    // Hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-compiler:2.51.1")
 

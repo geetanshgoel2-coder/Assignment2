@@ -30,7 +30,6 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         adapter = EntityAdapter { entityMap ->
-            // show a summary dialog on the dashboard
             showEntitySummaryDialog(entityMap)
         }
 
@@ -57,8 +56,6 @@ class DashboardActivity : AppCompatActivity() {
         }
     }
 
-    // ---------- dialog helpers ----------
-
     private fun showEntitySummaryDialog(entity: Map<String, Any?>) {
         val title = extractAssetType(entity) ?: "Details"
 
@@ -78,7 +75,6 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun extractAssetType(entity: Map<String, Any?>): String? {
-        // common keys to try; add more if your API varies
         val keysToTry = listOf("assetType", "type", "category", "name", "title")
         val first = keysToTry.firstOrNull { entity.containsKey(it) && entity[it] != null }
         return first?.let { "$it: ${entity[it]}" }
@@ -87,10 +83,8 @@ class DashboardActivity : AppCompatActivity() {
     private fun buildSummaryText(entity: Map<String, Any?>): String {
         val sb = StringBuilder()
 
-        // description (if present) at bottom; we show the other fields first
         val description = entity["description"]?.toString()?.takeIf { it.isNotBlank() }
 
-        // show first 6 non-description fields as key: value lines
         entity
             .filterKeys { it != "description" }
             .forEach { (k, v) ->

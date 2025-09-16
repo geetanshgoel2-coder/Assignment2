@@ -26,7 +26,6 @@ class LoginPage : AppCompatActivity() {
         binding = ActivityLoginPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Prefill for demo
         binding.etUsername.setText("Geetansh")
         binding.etPassword.setText("8103430")
 
@@ -45,7 +44,6 @@ class LoginPage : AppCompatActivity() {
             lifecycleScope.launch {
                 try {
                     val keypass = tryLoginOnce(user, pass) ?: run {
-                        // Retry once after short delay (Render cold start)
                         toast("Server waking up… retrying")
                         delay(1500)
                         tryLoginOnce(user, pass)
@@ -68,7 +66,6 @@ class LoginPage : AppCompatActivity() {
 
     private suspend fun tryLoginOnce(user: String, pass: String): String? {
         return try {
-            // Change "footscray" to "sydney" or "br" if that's your campus.
             val res = repo.login("footscray", user, pass)
             res.keypass
         } catch (e: SocketTimeoutException) {
